@@ -1,55 +1,201 @@
-# Freenit
+````markdown
+<div align="center">
 
-Freenit is a minimalist, high-performance init system written in C++. It is engineered for users who demand absolute control over PID 1 and wish to eliminate the bloat associated with modern, monolithic initialization frameworks.
+# 🚀 Freenit
 
-## Architecture
+**A minimalist, high-performance Linux init system written in modern C++.**
 
-Freenit follows the KISS (Keep It Simple, Stupid) principle. It serves as the primary system process, responsible for spawning essential user-space processes and reaping orphaned child processes (zombies).
+*Small. Fast. Deterministic.*
 
-## Key Features
+![C++](https://img.shields.io/badge/C%2B%2B-20-blue.svg?style=for-the-badge&logo=cplusplus)
+![Linux](https://img.shields.io/badge/Linux-PID%201-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![License](https://img.shields.io/github/license/Minish777/freenit?style=for-the-badge)
+![Repo Size](https://img.shields.io/github/repo-size/Minish777/freenit?style=for-the-badge)
+![Stars](https://img.shields.io/github/stars/Minish777/freenit?style=for-the-badge)
+![Issues](https://img.shields.io/github/issues/Minish777/freenit?style=for-the-badge)
 
-* Minimal Footprint: No heavy dependencies, standard library minimalism, and low memory overhead.
-* Static Binary: Built for portability and ease of deployment across various Linux distributions.
-* Deterministic Behavior: Predictable process lifecycle management without hidden abstractions.
-* Graceful Shutdown: Handles termination signals to ensure system integrity during power-off or reboot.
+</div>
 
-## Technical Specifications
+---
 
-| Feature | Description |
-| :--- | :--- |
+# About
+
+**Freenit** is a lightweight Linux init system implemented in **C++20**.
+
+Designed around the **KISS (Keep It Simple, Stupid)** philosophy, Freenit focuses exclusively on what an init system should do:
+
+- Start essential user-space processes
+- Manage PID 1 responsibilities
+- Reap orphaned child processes (zombies)
+- Handle clean shutdowns
+
+No service manager.
+
+No dependency resolver.
+
+No daemon framework.
+
+No unnecessary complexity.
+
+---
+
+# Features
+
+- ⚡ Extremely small memory footprint
+- 🚀 Fast startup
+- 📦 Fully static binary (optional)
+- 🔒 No runtime dependencies
+- 🧹 Automatic zombie process reaping
+- 🧠 Deterministic process lifecycle
+- 🛡️ Graceful reboot and shutdown handling
+- 🐧 Compatible with Linux kernels supporting custom init
+- 🔧 Easy to modify and extend
+
+---
+
+# Why Freenit?
+
+Modern init systems often evolve into complete operating system frameworks.
+
+Freenit intentionally does **not**.
+
+Its goal is to remain a simple, understandable PID 1 implementation that gives full control back to the user.
+
+If you prefer building your own environment instead of relying on large initialization suites, Freenit is designed for you.
+
+---
+
+# Architecture
+
+```
+        Linux Kernel
+              │
+              ▼
+         PID 1 (Freenit)
+              │
+      ┌───────┴────────┐
+      │                │
+ Spawn Processes   Reap Zombies
+      │                │
+      └───────┬────────┘
+              ▼
+        User-space Services
+```
+
+---
+
+# Technical Specifications
+
+| Property | Value |
+|-----------|-------|
 | Language | C++20 |
-| PID | 1 (Init) |
-| Dependency | None (Static) |
-| Build Tool | Makefile |
+| PID | 1 |
+| Platform | Linux |
+| Dependencies | None |
+| Build System | Make |
+| License | MIT |
 
-## Building from Source
+---
 
-To compile the project, ensure you have g++ and make installed on your system.
+# Building
 
-# Clone the repository
+## Requirements
 
+- g++
+- make
+
+Clone the repository:
+
+```bash
 git clone https://github.com/Minish777/freenit.git
 cd freenit
+```
 
-# Compile the binary
+Build:
+
+```bash
 make
+```
 
-## Installation
+---
 
-To deploy Freenit as your system init:
+# Installation
 
-1. Copy the binary to /sbin/:
-   sudo make install
+Install the binary:
 
-2. Update your bootloader (e.g., GRUB) configuration to pass the following kernel parameter:
-   init=/sbin/freenit
+```bash
+sudo make install
+```
 
-3. Reboot your system.
+Configure your bootloader (for example, GRUB) to use Freenit as PID 1:
 
-## Philosophy
+```text
+init=/sbin/freenit
+```
 
-Freenit is not just an init system; it is a declaration of independence from unnecessary system complexity. It is designed for those who prefer to build and maintain their own environment from the ground up, prioritizing efficiency and technical transparency.
+Reboot your system.
 
-## License
+---
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+# Project Structure
+
+```
+freenit/
+├── src/
+├── include/
+├── Makefile
+├── LICENSE
+└── README.md
+```
+
+---
+
+# Responsibilities
+
+As PID 1, Freenit is responsible for:
+
+- Initializing the userspace environment
+- Launching configured processes
+- Reaping orphaned child processes
+- Handling SIGTERM, SIGINT and shutdown events
+- Performing graceful system termination
+
+Nothing more.
+
+Nothing less.
+
+---
+
+# Philosophy
+
+> "Do one thing and do it well."
+
+Freenit embraces classic UNIX design principles.
+
+Instead of becoming another all-in-one system framework, it focuses on being:
+
+- Minimal
+- Predictable
+- Transparent
+- Efficient
+
+Every line of code exists for a reason.
+
+---
+
+# License
+
+This project is licensed under the **MIT License**.
+
+See the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+### Built for people who still believe PID 1 should stay simple.
+
+⭐ **If you like the project, consider giving it a star.**
+
+</div>
+````
