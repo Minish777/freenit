@@ -27,7 +27,8 @@ Freenit follows the KISS (Keep It Simple, Stupid) principle. It serves as the pr
 To compile the project, ensure you have g++ and make installed on your system.
 
 # Clone the repository
-git clone https://github.com/yourusername/freenit
+
+git clone https://github.com/Minish777/freenit.git
 cd freenit
 
 # Compile the binary
